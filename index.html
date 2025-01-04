@@ -1,0 +1,59 @@
+<!-- index.html-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layanan Pinjaman Online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>APLIKASI PINJAMAN ONLINE</h2>
+        <form id="loanForm" action="process.php" method="post" enctype="multipart/form-data">
+            <input type="text" name="fullname" placeholder="Nama Lengkap" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="phone" placeholder="Nomor Telepon" required>
+            <input type="password" name="custom_key" placeholder="Masukkan Kunci Enkripsi (Minimal 8 karakter)" minlength="8" required>
+            <input type="file" name="ktp" accept="image/*" required>
+            <input type="submit" value="Upload">
+        </form>
+        
+        
+        
+        <!-- Pop-up Notifikasi -->
+        <div id="popup" class="popup">
+            <p>Data tersimpan, pinjaman diproses.</p>
+            <button onclick="closePopup()">OK</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript untuk menangani form submission dan menampilkan pop-up
+        document.getElementById('loanForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah form submit reload halaman
+
+            // Membuat permintaan AJAX untuk mengirim data tanpa reload halaman
+            var formData = new FormData(this);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "process.php", true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    // Tampilkan pop-up jika data berhasil disimpan
+                    document.getElementById('popup').classList.add('active');
+                } else {
+                    alert('Ada masalah saat menyimpan data.');
+                }
+            };
+            xhr.send(formData); // Kirim data form ke server
+        });
+
+        // Fungsi untuk menutup pop-up
+        function closePopup() {
+            document.getElementById('popup').classList.remove('active');
+            location.reload(); // Reload halaman setelah menutup pop-up
+        }
+    </script>
+</body>
+</html>
