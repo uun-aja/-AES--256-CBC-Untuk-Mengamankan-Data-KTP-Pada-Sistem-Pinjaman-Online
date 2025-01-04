@@ -4,20 +4,25 @@ This is a simple system for an online loan service. Users can upload their KTP d
 
 # Features
 User data input form.
+
 Upload and encrypt KTP files with a key selected by the user.
+
 Store user data in JSON format.
+
 Pop-up notification to provide feedback after a successful upload.
 
 # Technologies Used
 Frontend: HTML, CSS, JavaScript, Python
+
 Backend: PHP
+
 Encryption Algorithm: AES-256-CBC
+
 File Storage: Local file system
 
 # How to Run the Project
 Clone the Repository
+
 git clone https://github.com/username/repository-name.git
+
 cd repository-name
-
-
-
