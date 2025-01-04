@@ -23,6 +23,4 @@ File Storage: Local file system
 # How to Run the Project
 Clone the Repository
 
-git clone https://github.com/username/repository-name.git
 
-cd repository-name
